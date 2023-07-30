@@ -10,12 +10,12 @@ phases:
     commands:
       - npm run docs:build
 
+# artifacts:
+#   files:
+#     - '**/*'
+#   base-directory: 'docs/.vitepress/dist'
+
 artifacts:
   files:
-    - '**/*'
-  base-directory: 'docs/.vitepress/dist'
-
-# post_build:
-  # commands:
-    # Sync the 'dist' folder with the S3 bucket
-    # - aws s3 sync docs/.vitepress/dist/ s3://thunder-vitepress-demo/
+    - 'docs/.vitepress/dist/**/*'
+  base-directory: '/'
