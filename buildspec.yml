@@ -10,12 +10,7 @@ phases:
     commands:
       - npm run docs:build
 
-# artifacts:
-#   files:
-#     - '**/*'
-#   base-directory: 'docs/.vitepress/dist'
-
 artifacts:
   files:
-    - 'docs/.vitepress/dist/**/*'
-  base-directory: '/'
+    - '**/*'
+  base-directory: 'docs/.vitepress/dist'
