@@ -18,4 +18,4 @@ artifacts:
 post_build:
   commands:
     # Sync the 'dist' folder with the S3 bucket
-    - aws s3 sync dist/ s3://thunder-vitepress-demo/
+    - aws s3 sync docs/.vitepress/dist/ s3://thunder-vitepress-demo/
