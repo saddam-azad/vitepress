@@ -1,0 +1,61 @@
+{
+  "pipeline": {
+      "name": "vitepress-pipeline",
+      "roleArn": "arn:aws:iam::665186350589:role/codepipeline-vitepress-role",
+      "artifactStore": {
+        "type": "S3",
+        "location": "thunder-vitepress-demo"
+      },
+      "stages": [
+        {
+          "name": "Source",
+          "actions": [
+            {
+              "name": "SourceAction",
+              "actionTypeId": {
+                "category": "Source",
+                "owner": "ThirdParty",
+                "provider": "GitHub",
+                "version": "1"
+              },
+              "configuration": {
+                "Owner": "saddam-azad",
+                "Repo": "vitepress",
+                "Branch": "main",
+                "OAuthToken": "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"
+              },
+              "outputArtifacts": [
+                {
+                  "name": "SourceOutput"
+                }
+              ],
+              "runOrder": 1
+            }
+          ]
+        },
+        {
+          "name": "Build",
+          "actions": [
+            {
+              "name": "BuildAction",
+              "actionTypeId": {
+                "category": "Build",
+                "owner": "AWS",
+                "provider": "CodeBuild",
+                "version": "1"
+              },
+              "configuration": {
+                "ProjectName": "codebuild-vitepress"
+              },
+              "inputArtifacts": [
+                {
+                  "name": "SourceOutput"
+                }
+              ],
+              "runOrder": 1
+            }
+          ]
+        }
+      ]
+  }
+}
